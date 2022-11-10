@@ -1,0 +1,9 @@
+
+
+.cardWrapper{
+    display: flex;
+    flex-direction: row;
+}
+
+.cardInfo{
+}
