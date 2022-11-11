@@ -1,6 +1,7 @@
-import { HomeFilled, StarFilled } from "@ant-design/icons";
+import { HomeOutlined, StarOutlined } from "@ant-design/icons";
 import React, { useState, useEffect } from "react";
 import { Pokemon } from "../../types";
+import { useNavigate } from "react-router-dom";
 import { getTypeIcon } from "../../utils/getType";
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import ToggleButton from 'react-bootstrap/ToggleButton';
@@ -11,7 +12,7 @@ function Details() {
     const [index, setIndex] = useState(0)
     const pokemonJson = localStorage.getItem("pokemon") || ""
     const pokemonsJson = localStorage.getItem("pokemons") || ""
-
+    const navigate = useNavigate();
 
     let pokemons: Pokemon[]
     pokemons = JSON.parse(pokemonsJson)
@@ -42,9 +43,9 @@ function Details() {
     return (
         <div className="detailsWrapper">
             <div className="detailsHeader">
-                <HomeFilled />
+                <HomeOutlined onClick={() => navigate("/")} />
                 <div />
-                <StarFilled />
+                <StarOutlined />
             </div>
             <div className="detailContent">
                 <Button
