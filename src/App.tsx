@@ -17,6 +17,7 @@ function App() {
     const setLocalInformations = async () => {
       const resp = await getAll()
       setAllPokemons(resp.data.allPokemon)
+      localStorage.setItem("pokemons", JSON.stringify(resp.data.allPokemon))
       const respTypes = await getAllTypes()
       setTypes(respTypes.data.allTypes)
     }
