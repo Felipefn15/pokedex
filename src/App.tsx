@@ -79,13 +79,16 @@ function App() {
           </Routes>
         </BrowserRouter>
       </div>
-      <div className='filter'>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Filter setFilter={setFilters} filter={filters} types={types} />} />
-          </Routes>
-        </BrowserRouter>
-      </div>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={
+            <div className='filter'>
+              <Filter setFilter={setFilters} filter={filters} types={types} />
+            </div>
+          } />
+        </Routes>
+      </BrowserRouter>
+      <div />
     </div>
   );
 }
