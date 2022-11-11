@@ -1,0 +1,17 @@
+.dropdownFilters {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+.dropdownFilter {
+    width: 45%;
+}
+
+.TextFilter {
+    margin: 10px;
+}
+
+@media screen and (max-width: 780px) {
+    .dropdownFilters {}
+}

@@ -1,9 +1,50 @@
-
-
-.cardWrapper{
+.cardWrapper {
     display: flex;
     flex-direction: row;
+    width: 270px;
+    border-style: outset;
+    margin: 15px;
+    border-radius: 10px;
 }
 
-.cardInfo{
+.cardWrapper:hover {
+    background-color: #8bac0f;
+    cursor: pointer;
+}
+
+.cardInfo {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.pokemonName {
+    font-family: "VT323";
+    size: 20px;
+}
+
+.cardImage {
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.typeIcon {
+    height: 20px;
+    width: 100px;
+    margin: 3px;
+}
+
+.favorite {
+    z-index: 99;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+@media screen and (max-width: 780px) {
+    .cardWrapper {
+        width: 80vw;
+    }
 }

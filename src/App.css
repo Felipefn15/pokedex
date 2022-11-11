@@ -1,16 +1,10 @@
-.App {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-}
-
 .Pokedex {
   /* background-image: url("./assets/bg.jpg"); */
   height: 100vh;
   width: 100vw;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   background-color: #ff3334;
   align-items: center;
   /* background-size: contain;
@@ -23,39 +17,74 @@
   grid-gap: 10px; */
 }
 
-.header{
-  width: 100vw;  
+.title {
+  text-align: center;
+}
+
+.header {
+  width: 100vw;
   margin-bottom: 50px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
-.greenBall{
+.greenBall {
   width: auto;
   height: 80px;
   margin-left: 50px;
   margin-top: 10px;
 }
 
-.pokeball{
+.pokeball {
   width: auto;
   height: 80px;
   margin-right: 50px;
   margin-top: 10px;
 }
 
-.headerImage{
+.headerImage {
   width: auto;
-  
+
   height: auto;
 }
 
 .content {
   background: #fff;
-  border-radius: 5px;
-  border: #110000 ;
+  border-radius: 1px;
+  border: #110000;
   border-style: inset;
   height: 50vh;
   width: 90vw;
 }
 
+.filter {
+  background: #fff;
+  border-radius: 10px;
+  border: #110000;
+  border-style: inset;
+  height: 20vh;
+  width: 50vw;
+  margin-bottom: 10px;
+}
+
+
+@media screen and (max-width: 780px) {
+  .greenBall {
+    margin-left: 10px;
+    height: 50px;
+    align-self: center;
+  }
+
+
+  .pokeball {
+    height: 50px;
+    margin-right: 10px;
+    align-self: center;
+  }
+
+  .filter {
+    height: 25vh;
+    width: 90vw;
+  }
+}
