@@ -1,48 +1,41 @@
-import React from "react";
-// import InfiniteScroll from 'react-infinite-scroll-component';
+import React, { useState } from "react";
+import { HomeFilled, HomeOutlined, StarFilled, StarOutlined } from "@ant-design/icons";
 import { HomeProps, Pokemon } from "../../types";
 import PokemonCard from "../pokemonCard";
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import ToggleButton from 'react-bootstrap/ToggleButton';
 import './index.css';
 
 function Home(props: HomeProps) {
-  // const [position, setPosition] = useState(0)
-
-  // const fetchData = () => {
-  //   const newPosition = position + 4
-  //   console.log({ newPosition, allPokemons, showPokemons, position })
-  //   if (newPosition + 4 < allPokemons.length) {
-  //     setShowPokemons(allPokemons.slice(newPosition, newPosition + 4))
-  //     setPosition(newPosition)
-  //   }
-  //   else {
-
-  //     setShowPokemons(allPokemons.slice(position, allPokemons.length))
-  //     setPosition(allPokemons.length)
-  //   }
-
-  // }
+  // const [onlyFavorite, setOnlyFavorite] = useState('1')
+  // const radios = [
+  //   { icon: <HomeFilled />, value: '1' },
+  //   { icon: <StarFilled />, value: '2' },
+  // ];
 
   return (
     <div className="homeWrapper">
-      {/* <InfiniteScroll
-        dataLength={showPokemons.length}
-        next={fetchData}
-        style={{ height: "100%", width: "100%", maxHeight: "100%", maxWidth: "100%" }}
-        hasMore={true}
-        loader={<h4>Loading...</h4>}
-        endMessage={
-          <p style={{ textAlign: 'center' }}>
-            <b>Yay! You have seen it all</b>
-          </p>
-        }>
-        */}
-
+      {/* <ButtonGroup>
+        {radios.map((radio, idx) => (
+          <ToggleButton
+            key={idx}
+            id={`radio-${idx}`}
+            type="radio"
+            variant={idx % 2 ? 'outline-success' : 'outline-danger'}
+            name="radio"
+            value={radio.value}
+            checked={onlyFavorite === radio.value}
+            onChange={(e) => setOnlyFavorite(e.currentTarget.value)}
+          >
+            {radio.icon}
+          </ToggleButton>
+        ))}
+      </ButtonGroup> */}
       {
         props.pokemons.map((pokemon: Pokemon) => {
           return PokemonCard(pokemon)
         })
       }
-      {/* </InfiniteScroll> */}
     </div>
   );
 }

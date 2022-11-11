@@ -18,6 +18,7 @@ function App() {
       const resp = await getAll()
       setAllPokemons(resp.data.allPokemon)
       localStorage.setItem("pokemons", JSON.stringify(resp.data.allPokemon))
+      localStorage.setItem('favorites', JSON.stringify([]))
       const respTypes = await getAllTypes()
       setTypes(respTypes.data.allTypes)
     }

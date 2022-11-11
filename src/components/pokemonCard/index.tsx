@@ -1,12 +1,23 @@
 import { Pokemon } from "../../types";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import './index.css';
-import { StarOutlined } from "@ant-design/icons"
+import { StarFilled, StarOutlined } from "@ant-design/icons"
 import { getTypeIcon } from "../../utils/getType";
 
 
 const PokemonCard = (item: Pokemon) => {
     const navigate = useNavigate();
+    const [isFavorite, setIsFavorite] = useState(false)
+
+    const favoriteJson = localStorage.getItem("favorites") || ""
+    let favorites: number[]
+    favorites = JSON.parse(favoriteJson)
+
+    useEffect(() => {
+        setIsFavorite(favorites.indexOf(item.id) > -1)
+    }, [])
+
     const seeDetails = () => {
         localStorage.setItem("pokemon", JSON.stringify(item))
         navigate("/details")
@@ -28,7 +39,7 @@ const PokemonCard = (item: Pokemon) => {
                     })
                 }
             </div>
-            <StarOutlined className="favorite" />
+            {isFavorite ? <StarFilled /> : <StarOutlined />}
         </button >
     );
 }
