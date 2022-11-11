@@ -1,4 +1,5 @@
 import { Pokemon } from "../../types";
+import { useNavigate } from "react-router-dom";
 import './index.css';
 import { StarOutlined } from "@ant-design/icons"
 import bugType from "../../assets/types/bug.png"
@@ -21,6 +22,7 @@ import steelType from "../../assets/types/steel.png"
 import waterType from "../../assets/types/water.png"
 
 const PokemonCard = (item: Pokemon) => {
+    const navigate = useNavigate();
     const getTypeIcon = (name: string) => {
         switch (name) {
             case "bug":
@@ -62,8 +64,13 @@ const PokemonCard = (item: Pokemon) => {
         }
     }
 
+    const seeDetails = () => {
+        localStorage.setItem("pokemon", JSON.stringify(item))
+        navigate("/details")
+    }
+
     return (
-        <div className="cardWrapper" key={item.id}>
+        <button className="cardWrapper" key={item.id} onClick={() => seeDetails()}>
             <div className="cardImage" >
                 <img src={item.sprites.front_default} alt={`${item.name}_${item.id}`} />
             </div>
@@ -79,7 +86,7 @@ const PokemonCard = (item: Pokemon) => {
                 }
             </div>
             <StarOutlined className="favorite" />
-        </div >
+        </button >
     );
 }
 

@@ -5,10 +5,14 @@
     border-style: outset;
     margin: 15px;
     border-radius: 10px;
+    z-index: 99;
+    color: #8bac0f;
+    text-decoration: none;
 }
 
 .cardWrapper:hover {
     background-color: #8bac0f;
+    color: white;
     cursor: pointer;
 }
 

@@ -26,3 +26,7 @@ export interface FilterProps {
     types: Type[]
     setFilter: any
 }
+
+export interface HomeProps {
+    pokemons: Pokemon[]
+}

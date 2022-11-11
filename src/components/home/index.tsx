@@ -1,10 +1,10 @@
 import React from "react";
 // import InfiniteScroll from 'react-infinite-scroll-component';
-import { Pokemon } from "../../types";
+import { HomeProps, Pokemon } from "../../types";
 import PokemonCard from "../pokemonCard";
 import './index.css';
 
-function Home(props: any) {
+function Home(props: HomeProps) {
   // const [position, setPosition] = useState(0)
 
   // const fetchData = () => {

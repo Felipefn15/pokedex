@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./components/home"
 import Filter from './components/filter';
 import { FilterValues, Pokemon, Type } from './types';
+import Details from './components/details';
 function App() {
   const [allPokemons, setAllPokemons] = useState<Pokemon[]>([])
   const [types, setTypes] = useState<Type[]>([])
@@ -74,6 +75,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home pokemons={filterPokemons()} />} />
+            <Route path="/details" element={<Details />} />
           </Routes>
         </BrowserRouter>
       </div>
