@@ -38,11 +38,11 @@ function App() {
   const filterPokemons = () => {
     let showPokemons: Pokemon[] = allPokemons
 
-    if (onlyFavorites === '1') {
-      const favoriteJson = localStorage.getItem("favorites") || ""
+    if (onlyFavorites === '2') {
+      // const favoriteJson = localStorage.getItem("favorites") || ""
       let favorites: number[]
-      favorites = JSON.parse(favoriteJson)
-
+      // favorites = JSON.parse(favoriteJson)
+      favorites = [1, 2, 3]
       favorites.forEach((id) => {
         showPokemons = []
         allPokemons.forEach((pokemon) => {
@@ -97,7 +97,7 @@ function App() {
         <h1 className='title'>POKEDÉX OF ANOMALIES</h1>
         <img src={pokeball} alt="Pokeball" className='pokeball' />
       </div>
-      <div className='favoriteFilter'>
+      {/* <div className='favoriteFilter'>
         <ButtonGroup>
           {radios.map((radio, idx) => (
             <ToggleButton
@@ -114,7 +114,7 @@ function App() {
             </ToggleButton>
           ))}
         </ButtonGroup>
-      </div>
+      </div> */}
       <div className='content'>
         <BrowserRouter>
           <Routes>

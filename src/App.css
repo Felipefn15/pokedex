@@ -3,7 +3,6 @@
   width: 100vw;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   background-color: #ff3334;
   align-items: center;
 }
@@ -14,7 +13,7 @@
 
 .header {
   width: 100vw;
-  margin-bottom: 50px;
+  margin-bottom: 5px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -52,6 +51,7 @@
   border-style: inset;
   height: 50vh;
   width: 90vw;
+  margin-bottom: 20px;
 }
 
 .filter {
@@ -59,16 +59,19 @@
   border-radius: 10px;
   border: #110000;
   border-style: inset;
-  height: 20vh;
+  height: 100%;
   width: 70vw;
   margin-bottom: 10px;
 }
 
-
 @media screen and (max-width: 1024px) {
   .filter {
-    height: 25vh;
+    height: 100%;
     width: 90vw;
+  }
+
+  .content {
+    margin-bottom: 5px;
   }
 }
 
@@ -78,7 +81,6 @@
     height: 50px;
     align-self: center;
   }
-
 
   .pokeball {
     height: 50px;

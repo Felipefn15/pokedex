@@ -11,3 +11,9 @@
 .TextFilter {
     margin: 10px;
 }
+
+@media screen and (max-width: 1024px) {
+    .TextFilter {
+        margin: 5px;
+    }
+  }

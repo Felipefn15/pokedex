@@ -27,6 +27,7 @@
 .pokemonName {
     font-family: "VT323";
     size: 20px;
+    margin-bottom: 2px;
 }
 
 .cardImage {

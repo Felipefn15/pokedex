@@ -65,7 +65,22 @@ function Details() {
         <div className="detailsWrapper">
             <div className="detailsHeader">
                 <HomeOutlined onClick={() => navigate("/")} />
-                <div />
+                <ButtonGroup>
+                    {radios.map((radio, idx) => (
+                        <ToggleButton
+                            key={idx}
+                            id={`radio-${idx}`}
+                            type="radio"
+                            variant={idx % 2 ? 'outline-success' : 'outline-danger'}
+                            name="radio"
+                            value={radio.value}
+                            checked={showShiny === radio.value}
+                            onChange={(e) => setShowShiny(e.currentTarget.value)}
+                        >
+                            {radio.name}
+                        </ToggleButton>
+                    ))}
+                </ButtonGroup>
                 {isFavorite ? <StarFilled onClick={() => handleFavorite()} /> : <StarOutlined onClick={() => handleFavorite()} />}
             </div>
             <div className="detailContent">
@@ -78,23 +93,8 @@ function Details() {
                     <h3>{"<"}</h3>
                 </Button>
                 <div className="detailCard">
-                    <ButtonGroup>
-                        {radios.map((radio, idx) => (
-                            <ToggleButton
-                                key={idx}
-                                id={`radio-${idx}`}
-                                type="radio"
-                                variant={idx % 2 ? 'outline-success' : 'outline-danger'}
-                                name="radio"
-                                value={radio.value}
-                                checked={showShiny === radio.value}
-                                onChange={(e) => setShowShiny(e.currentTarget.value)}
-                            >
-                                {radio.name}
-                            </ToggleButton>
-                        ))}
-                    </ButtonGroup>
                     <img src={showShiny === '2' ? pokemon?.sprites.front_shiny : pokemon?.sprites.front_default} alt={`${pokemon?.name}_${pokemon?.id}`} className="detailImage" />
+
                     <p>#{pokemon?.id}</p>
                     <h3 className="pokemonName">{pokemon?.name.toUpperCase()}</h3>
                     {
