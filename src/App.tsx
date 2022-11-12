@@ -1,27 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import greenBall from './assets/greren_ball.png';
 import pokeball from './assets/pokeball.png';
-import { HomeFilled, StarFilled } from "@ant-design/icons";
 import './App.css';
 import { getAll, getAllTypes } from "./query/index"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./components/home"
 import Filter from './components/filter';
-import ButtonGroup from 'react-bootstrap/ButtonGroup';
-import ToggleButton from 'react-bootstrap/ToggleButton';
 import { FilterValues, Pokemon, Type } from './types';
 import Details from './components/details';
+
 function App() {
   const [allPokemons, setAllPokemons] = useState<Pokemon[]>([])
   const [types, setTypes] = useState<Type[]>([])
   const [filters, setFilters] = useState<FilterValues>()
-  const [onlyFavorites, setOnlyFavorites] = useState('1')
-
-
-  const radios = [
-    { icon: <HomeFilled />, value: '1' },
-    { icon: <StarFilled />, value: '2' },
-  ];
+  
+  // const favoriteJson = localStorage.getItem("favorites") || ""
+  // let favorites: number[]
+  // favorites = JSON.parse(favoriteJson)
 
   useEffect(() => {
     const setLocalInformations = async () => {
@@ -37,20 +32,6 @@ function App() {
 
   const filterPokemons = () => {
     let showPokemons: Pokemon[] = allPokemons
-
-    if (onlyFavorites === '2') {
-      // const favoriteJson = localStorage.getItem("favorites") || ""
-      let favorites: number[]
-      // favorites = JSON.parse(favoriteJson)
-      favorites = [1, 2, 3]
-      favorites.forEach((id) => {
-        showPokemons = []
-        allPokemons.forEach((pokemon) => {
-          if (pokemon.id === id)
-            showPokemons.push(pokemon)
-        })
-      })
-    }
 
     if (filters?.name) {
       const name = filters.name
@@ -97,24 +78,6 @@ function App() {
         <h1 className='title'>POKEDÉX OF ANOMALIES</h1>
         <img src={pokeball} alt="Pokeball" className='pokeball' />
       </div>
-      {/* <div className='favoriteFilter'>
-        <ButtonGroup>
-          {radios.map((radio, idx) => (
-            <ToggleButton
-              key={idx}
-              id={`radio-${idx}`}
-              type="radio"
-              variant={idx % 2 ? 'outline-success' : 'outline-danger'}
-              name="radio"
-              value={radio.value}
-              checked={onlyFavorites === radio.value}
-              onChange={(e) => setOnlyFavorites(e.currentTarget.value)}
-            >
-              {radio.icon}
-            </ToggleButton>
-          ))}
-        </ButtonGroup>
-      </div> */}
       <div className='content'>
         <BrowserRouter>
           <Routes>
