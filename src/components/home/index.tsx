@@ -7,8 +7,9 @@ function Home(props: HomeProps) {
 
   const checkFavoriteList = () => {
     const favoriteJson = localStorage.getItem("favorites") || ""
-    let favorites: number[]
-    favorites = JSON.parse(favoriteJson)
+    let favorites = []
+    if (favoriteJson)
+      favorites = JSON.parse(favoriteJson)
     return favorites
   }
 
@@ -37,7 +38,7 @@ function Home(props: HomeProps) {
       {
         returnPokemonList().length > 0 ? returnPokemonList().map((pokemon: Pokemon) => {
           return <PokemonCard pokemon={pokemon} />
-        }) : <h3 className="pokemonName">Any Pokemon Found</h3>
+        }) : <h3 className="pokemonName" data-testid="any_pokemon">Any Pokemon Found</h3>
       }
     </div>
   );

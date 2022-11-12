@@ -17,7 +17,7 @@ const PokemonCard = ({ pokemon }: PokemonCardProps) => {
     }
 
     return (
-        <button className="cardWrapper" key={pokemon.id} onClick={() => seeDetails()}>
+        <button className="cardWrapper" key={pokemon.id} data-testid={`pokemon_card_${pokemon.id}`} onClick={() => seeDetails()}>
             <div className="cardImage" >
                 <img src={pokemon.sprites.front_default} alt={`${pokemon.name}_${pokemon.id}`} />
             </div>
