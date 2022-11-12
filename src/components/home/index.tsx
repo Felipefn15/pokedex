@@ -5,12 +5,39 @@ import './index.css';
 
 function Home(props: HomeProps) {
 
+  const checkFavoriteList = () => {
+    const favoriteJson = localStorage.getItem("favorites") || ""
+    let favorites: number[]
+    favorites = JSON.parse(favoriteJson)
+    return favorites
+  }
+
+  const setFavorites = () => {
+    const list = checkFavoriteList()
+    const pokemons = props.pokemons.map((pokemon) => {
+      let newPokemon = { ...pokemon }
+      if (list.includes(pokemon.id))
+        newPokemon.favorite = true
+      return newPokemon
+    })
+    return pokemons
+  }
+
+  const returnPokemonList = () => {
+    const pokemonList = setFavorites()
+    if (props.onlyFavorites) {
+      return pokemonList.filter((pokemon) => pokemon.favorite)
+    }
+    else
+      return pokemonList
+  }
+
   return (
     <div className="homeWrapper">
       {
-        props.pokemons?.length > 0 ? props.pokemons.map((pokemon: Pokemon) => {
+        returnPokemonList().length > 0 ? returnPokemonList().map((pokemon: Pokemon) => {
           return <PokemonCard pokemon={pokemon} />
-        }) : <p>LOADING...</p>
+        }) : <h3 className="pokemonName">Any Pokemon Found</h3>
       }
     </div>
   );

@@ -1,7 +1,7 @@
 import { PokemonCardProps } from "../../types";
 import { useNavigate } from "react-router-dom";
 import './index.css';
-import { StarOutlined } from "@ant-design/icons"
+import { StarFilled, StarOutlined } from "@ant-design/icons"
 import { getTypeIcon } from "../../utils/getType";
 
 
@@ -10,6 +10,10 @@ const PokemonCard = ({ pokemon }: PokemonCardProps) => {
     const seeDetails = () => {
         localStorage.setItem("pokemon", JSON.stringify(pokemon))
         navigate("/details")
+    }
+
+    const isFavorite = () => {
+        return pokemon.favorite ? <StarFilled className="favorite" /> : <StarOutlined className="favorite" />
     }
 
     return (
@@ -28,7 +32,7 @@ const PokemonCard = ({ pokemon }: PokemonCardProps) => {
                     })
                 }
             </div>
-            <StarOutlined className="favorite" />
+            {isFavorite()}
         </button >
     );
 }

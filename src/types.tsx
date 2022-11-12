@@ -3,6 +3,7 @@ export interface Pokemon {
     name: string,
     sprites: Sprite,
     types: Type[],
+    favorite?: boolean
 }
 
 export interface Sprite {
@@ -25,10 +26,12 @@ export interface FilterProps {
     filter: FilterValues | undefined,
     types: Type[]
     setFilter: any
+    goToFavorite: boolean
 }
 
 export interface HomeProps {
     pokemons: Pokemon[]
+    onlyFavorites: boolean
 }
 
 export interface PokemonCardProps {

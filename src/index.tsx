@@ -11,6 +11,9 @@ import "@fontsource/vt323";
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
+localStorage.setItem('favorites', JSON.stringify([]))
+
 root.render(
   <React.StrictMode>
     <App />

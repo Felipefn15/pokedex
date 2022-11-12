@@ -2,6 +2,7 @@
     display: flex;
     justify-content: space-between;
     margin: 10px;
+    align-items: center;
 }
 
 .dropdownFilter {
@@ -10,6 +11,10 @@
 
 .TextFilter {
     margin: 10px;
+}
+
+.secondFilter{
+    
 }
 
 @media screen and (max-width: 1024px) {

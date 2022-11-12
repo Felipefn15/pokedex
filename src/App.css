@@ -54,6 +54,10 @@
   margin-bottom: 20px;
 }
 
+.detailsContent {
+  height: 90vh;
+}
+
 .filter {
   background: #fff;
   border-radius: 10px;

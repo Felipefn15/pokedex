@@ -2,8 +2,12 @@ import React from "react";
 import { FilterProps } from "../../types";
 import Form from 'react-bootstrap/Form';
 import './index.css';
+import { useNavigate } from "react-router-dom";
+import { Button } from "react-bootstrap";
 
 function Filter(props: FilterProps) {
+    const navigate = useNavigate();
+
     return (
         <div className="filterWrapper">
             <div className="dropdownFilters">
@@ -11,6 +15,7 @@ function Filter(props: FilterProps) {
                     <p>Order By</p>
                     <Form.Select
                         aria-label="Default select example"
+                        value={props.filter?.orderBy}
                         onChange={(e) => {
                             props.setFilter({ ...props.filter, orderBy: e.target.value })
                         }}
@@ -21,9 +26,32 @@ function Filter(props: FilterProps) {
                     </Form.Select>
                 </div>
                 <div className="dropdownFilter">
+                    <p>Favorites</p>
+                    <Button
+                        onClick={() => navigate(props.goToFavorite ? "/favorite" : "/")}
+                        variant={props.goToFavorite ? 'success' : 'danger'}
+                    >
+                        {props.goToFavorite ? 'Enable' : 'Disable'}
+                    </Button>
+                </div>
+            </div>
+            <div className="dropdownFilters">
+                <div className="dropdownFilter">
+                    <p>Name</p>
+                    <Form.Control
+                        type="text"
+                        placeholder="Filter by pokemon name"
+                        value={props.filter?.name}
+                        onChange={(e) => {
+                            props.setFilter({ ...props.filter, name: e.target.value })
+                        }}
+                    />
+                </div>
+                <div className="dropdownFilter">
                     <p>Types</p>
                     <Form.Select
                         aria-label="Default select example"
+                        value={props.filter?.typeId}
                         onChange={(e) => {
                             props.setFilter({ ...props.filter, typeId: e.target.value })
                         }}
@@ -34,17 +62,6 @@ function Filter(props: FilterProps) {
                         })}
                     </Form.Select>
                 </div>
-            </div>
-            <div className="TextFilter">
-                <p>Name</p>
-                <Form.Control
-                    type="text"
-                    placeholder="Filter by pokemon name"
-                    value={props.filter?.name}
-                    onChange={(e) => {
-                        props.setFilter({ ...props.filter, name: e.target.value })
-                    }}
-                />
             </div>
         </div>
     );

@@ -14,18 +14,14 @@ function App() {
   const [types, setTypes] = useState<Type[]>([])
   const [filters, setFilters] = useState<FilterValues>()
 
-  // const favoriteJson = localStorage.getItem("favorites") || ""
-  // let favorites: number[]
-  // favorites = JSON.parse(favoriteJson)
-
   useEffect(() => {
     const setLocalInformations = async () => {
       const resp = await getAll()
       setAllPokemons(resp.data.allPokemon)
       localStorage.setItem("pokemons", JSON.stringify(resp.data.allPokemon))
-      localStorage.setItem('favorites', JSON.stringify([]))
       const respTypes = await getAllTypes()
       setTypes(respTypes.data.allTypes)
+
     }
     setLocalInformations()
   }, [])
@@ -77,17 +73,38 @@ function App() {
         <h1 className='title'>POKEDÉX OF ANOMALIES</h1>
         <img src={pokeball} alt="Pokeball" className='pokeball' />
       </div>
-      <div className='content'>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Home pokemons={filterPokemons()} />} />
-            <Route path="/details" element={<Details />} />
-          </Routes>
-        </BrowserRouter>
-      </div>
-      <div className='filter'>
-        <Filter setFilter={setFilters} filter={filters} types={types} />
-      </div>
+      <BrowserRouter>
+
+        <Routes>
+          <Route path="/" element={
+            <div className='content'>
+              <Home pokemons={filterPokemons()} onlyFavorites={false} />
+            </div>
+          } />
+          <Route path="/details" element={
+            <div className='content detailsContent'>
+              <Details />
+            </div>
+          } />
+          <Route path="/favorite" element={
+            <div className='content'>
+              <Home pokemons={filterPokemons()} onlyFavorites={true} />
+            </div>
+          } />
+        </Routes>
+        <Routes>
+          <Route path="/" element={
+            <div className='filter'>
+              <Filter setFilter={setFilters} filter={filters} types={types} goToFavorite={true} />
+            </div>} />
+          <Route path="/details" element={<div />} />
+          <Route path="/favorite" element={
+            <div className='filter'>
+              <Filter setFilter={setFilters} filter={filters} types={types} goToFavorite={false} />
+            </div>} />
+        </Routes>
+      </BrowserRouter >
+
     </div >
   );
 }
