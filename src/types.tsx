@@ -30,3 +30,7 @@ export interface FilterProps {
 export interface HomeProps {
     pokemons: Pokemon[]
 }
+
+export interface PokemonCardProps {
+    pokemon: Pokemon
+}

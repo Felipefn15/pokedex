@@ -12,9 +12,11 @@ function Details() {
     const [showShiny, setShowShiny] = useState('1')
     const [index, setIndex] = useState(0)
     const [isFavorite, setIsFavorite] = useState(false)
+
     const pokemonJson = localStorage.getItem("pokemon") || ""
     const pokemonsJson = localStorage.getItem("pokemons") || ""
     const favoriteJson = localStorage.getItem("favorites") || ""
+    
     const navigate = useNavigate();
 
     let pokemons: Pokemon[]
@@ -24,10 +26,10 @@ function Details() {
     let favorites: number[]
     favorites = JSON.parse(favoriteJson)
 
-    useEffect(() => {
-        setIndex(pokemons.map((value, index) => value.id === pokemon.id && index).filter((item) => item !== false)[0] || 0)
-        setIsFavorite(favorites.indexOf(pokemon.id) > -1)
-    }, [])
+    // useEffect(() => {
+    //     setIndex(pokemons.map((value, index) => value.id === pokemon.id && index).filter((item) => item !== false)[0] || 0)
+    //     setIsFavorite(favorites.indexOf(pokemon.id) > -1)
+    // }, [])
 
     const previousPokemon = () => {
         pokemon = pokemons[index - 1]

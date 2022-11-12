@@ -13,7 +13,7 @@ function App() {
   const [allPokemons, setAllPokemons] = useState<Pokemon[]>([])
   const [types, setTypes] = useState<Type[]>([])
   const [filters, setFilters] = useState<FilterValues>()
-  
+
   // const favoriteJson = localStorage.getItem("favorites") || ""
   // let favorites: number[]
   // favorites = JSON.parse(favoriteJson)
@@ -54,7 +54,6 @@ function App() {
       }
       );
     }
-
     return showPokemons
   }
 
