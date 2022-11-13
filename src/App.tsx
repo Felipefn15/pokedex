@@ -30,8 +30,8 @@ function App() {
     let showPokemons: Pokemon[] = allPokemons
 
     if (filters?.name) {
-      const name = filters.name
-      showPokemons = showPokemons.filter(pokemon => pokemon.name.includes(name))
+      const name = filters.name.toUpperCase()
+      showPokemons = showPokemons.filter(pokemon => pokemon.name.toUpperCase().includes(name))
     }
 
     if (filters?.typeId && filters?.typeId > 0) {
