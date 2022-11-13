@@ -67,7 +67,7 @@ function Details() {
     ];
 
     return (
-        <div className="detailsWrapper">
+        <div className="detailsWrapper" data-testid={`details_${pokemon.id}`} >
             <div className="detailsHeader">
                 <HomeOutlined onClick={() => navigate("/")} />
                 <ButtonGroup>
@@ -118,7 +118,7 @@ function Details() {
                     <h3>{">"}</h3>
                 </Button>
             </div>
-        </div>
+        </ div>
     )
 }
 
